@@ -15,7 +15,7 @@ function TabGroup() {
   return (
       <Tab.Navigator
       screenOptions={{tabBarActiveTintColor:"#1DA1F2", headerShown: false}} //this headerShown is to hide the header index but its not working, 
-      // instead its hiding the good working ones. if you figure out how to hide the header index, please let me know. 
+      // instead its hiding the good working ones. i will fix it later
       >
           <Tab.Screen 
             name="ChatBot" 
