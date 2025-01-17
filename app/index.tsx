@@ -4,31 +4,83 @@ import Journaling from "./Journaling"
 import Achievements from "./Achievements"
 import HabitBuilder from "./Habit Builder"
 import ChatBot from "./Chatbot"
-import AntDesign from '@expo/vector-icons/AntDesign';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Plus from '@expo/vector-icons/MaterialCommunityIcons';
-import EvilIcons from '@expo/vector-icons/EvilIcons';
 import { Ionicons } from "@expo/vector-icons"
-import { TabBarIndicator } from "react-native-tab-view"
+
 //Tab Bottom
 const Tab = createBottomTabNavigator();
+
 function TabGroup() {
   return (
-      <Tab.Navigator>
-          <Tab.Screen name="ChatBot" component={ChatBot}
-          options={{tabBarIcon: ()=> <MaterialCommunityIcons name="robot-excited-outline" size={24} color="black" />}}
+      <Tab.Navigator
+      screenOptions={{tabBarActiveTintColor:"#1DA1F2", headerShown: false}} //this headerShown is to hide the header index but its not working, 
+      // instead its hiding the good working ones. if you figure out how to hide the header index, please let me know. 
+      >
+          <Tab.Screen 
+            name="ChatBot" 
+            component={ChatBot}
+            options={{
+              tabBarIcon: ({ focused, size, color }) => (
+                <MaterialCommunityIcons 
+                  name={focused ? "robot-excited" : "robot-excited-outline"} 
+                  size={size} 
+                  color={color} 
+                />
+              )
+            }}
           />
-          <Tab.Screen name="Journaling" component={Journaling} 
-          options={{tabBarIcon: ()=> <Ionicons name="book-outline" size={24} color="black" />}}
+          <Tab.Screen 
+            name="Journaling" 
+            component={Journaling}
+            options={{
+              tabBarIcon: ({ focused, size, color }) => (
+                <Ionicons 
+                  name={focused ? "book" : "book-outline"} 
+                  size={size} 
+                  color={color} 
+                />
+              )
+            }}
           />
-          <Tab.Screen name="Home" component={Index} 
-          options={{tabBarIcon: ()=> <AntDesign name="home" size={24} color="black" />}}
+          <Tab.Screen 
+            name="Home" 
+            component={Index}
+            options={{
+              tabBarIcon: ({ focused, size, color }) => (
+                <Ionicons 
+                  name={focused ? "home" : "home-outline"} 
+                  size={size} 
+                  color={color} 
+                />
+              )
+            }}
           />
-          <Tab.Screen name="Habit Builder" component={HabitBuilder} 
-          options={{tabBarIcon: () => <Plus name="plus-minus-variant" size={24} color="black" />}}
+          <Tab.Screen 
+            name="Habit Builder" 
+            component={HabitBuilder}
+            options={{
+              tabBarIcon: ({ focused, size, color }) => (
+                <Plus 
+                  name={focused ? "plus-minus" : "plus-minus-variant"} 
+                  size={size} 
+                  color={color} 
+                />
+              )
+            }}
           />
-          <Tab.Screen name="Achievements" component={Achievements} 
-          options={{tabBarIcon: ()=> <EvilIcons name="trophy" size={24} color="black" />}}
+          <Tab.Screen 
+            name="Achievements" 
+            component={Achievements}
+            options={{
+              tabBarIcon: ({ focused, size, color }) => (
+                <Ionicons 
+                  name={focused ? "trophy" : "trophy-outline"} 
+                  size={size} 
+                  color={color} 
+                />
+              )
+            }}
           />
       </Tab.Navigator>
   );
